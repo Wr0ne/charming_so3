@@ -80,13 +80,13 @@ $$\text{Log}(\boldsymbol{R}) = (\text{log}(\boldsymbol{R}))^\vee$$
 
 ## 示例
 
-在 `examples/example_optimization.m` 文件中，包含了一个完整的优化示例。该示例展示了如何定义目标旋转矩阵，并使用高斯-牛顿法进行优化，找到最优的旋转向量。
+在 `optimization_on_SO3.m` 文件中，包含了一个完整的优化示例。该示例展示了如何定义目标旋转矩阵，并使用高斯-牛顿法进行优化，找到最优的旋转向量。
 
 ## 运行指南
 
 1. 克隆或下载项目文件。
 2. 在 MATLAB 中打开项目目录。
-3. 运行 `examples/example_optimization.m` 文件，查看优化结果。
+3. 运行 `optimization_on_SO3.m` 文件，查看优化结果。
 
 ## 参考文献
 
