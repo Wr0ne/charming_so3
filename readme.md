@@ -35,16 +35,16 @@
 
 旋转向量 $\boldsymbol{\omega} \in \mathbb{R}^3$ 可以表示一个三维旋转。将当前坐标系围绕单位向量 $\frac{\boldsymbol{\omega}}{||\boldsymbol{\omega}||}$ 旋转 $||\boldsymbol{\omega}||$ 弧度。每个旋转矩阵都可以表示成一个旋转向量，转换方式为：
 
-- 指数映射（Exponential map）：$\boldsymbol{R} = \text{Exp}(\boldsymbol{\omega})$
-- 对数映射（Log map）：$\boldsymbol{\omega} = \text{Log}(\boldsymbol{R})$
+- 指数映射（Exponential map）： $\boldsymbol{R}=\text{exp}(\boldsymbol{\omega}^{\wedge})$
+- 对数映射（Log map）： $\boldsymbol{\omega}=\text{Log}(\boldsymbol{R})$
 
 ## 目标函数
 
 在 $SO(3)$ 上定义目标函数：
-$$ \text{cost}(\boldsymbol{R}) = {\norm{\text{Log}( \boldsymbol{R}_{\text{target}}^{\top} \boldsymbol{R} )}}^2 $$
+$$\text{cost}(\boldsymbol{R}) = ||{\text{Log}\left(\boldsymbol{R}_{\text{target}}^{\top}\boldsymbol{R}\right)}||^2$$
 
 转换为旋转向量形式：
-$$ \text{cost}(\boldsymbol{\omega}) = \text{cost}(\boldsymbol{R}(\boldsymbol{\omega})) $$
+$$\text{cost}(\boldsymbol{\omega}) = \text{cost}(\boldsymbol{R}(\boldsymbol{\omega}))$$
 其中 $\boldsymbol{R}(\boldsymbol{\omega}) = \text{Exp}(\boldsymbol{\omega}), \boldsymbol{R}(\boldsymbol{\omega}) \in SO(3)$。
 
 ## 优化算法
@@ -60,20 +60,23 @@ $$ \text{cost}(\boldsymbol{\omega}) = \text{cost}(\boldsymbol{R}(\boldsymbol{\om
 ## 函数说明
 
 ### wedge.m
-将向量 $\boldsymbol{v} = [v_1, v_2, v_3]^\top$ 转换为反对称矩阵：
-$$ \boldsymbol{v}^{\wedge} = \begin{bmatrix} 0 & -v_3 & v_2 \\ v_3 & 0 & -v_1 \\ -v_2 & v_1 & 0 \end{bmatrix} $$
+将向量 $\boldsymbol{v} = [v_1, v_2, v_3]^\top$ 转换为反对称矩阵: 
+
+$${\boldsymbol{v}^{\wedge}}={\begin{bmatrix} 0 & -v_3 & v_2 
+\\\\ v_3 & 0 & -v_1 
+\\\\ -v_2 & v_1 & 0 \end{bmatrix}}$$
 
 ### expm_wedge.m
 使用 MATLAB 内置函数 `expm()` 实现旋转向量到旋转矩阵的转换：
-$$ \text{Exp}(\boldsymbol{\omega}) = \text{exp}(\boldsymbol{\omega}^\wedge) $$
+$$\text{Exp}(\boldsymbol{\omega}) = \text{exp}(\boldsymbol{\omega}^\wedge)$$
 
 ### vee.m
 将反对称矩阵转换为向量：
-$$ \boldsymbol{R}^{\vee} = [v_1, v_2, v_3]^\top $$
+$$\boldsymbol{R}^{\vee} = [v_1, v_2, v_3]^\top$$
 
 ### vee_logm.m
 使用 MATLAB 内置函数 `logm()` 实现旋转矩阵到旋转向量的转换：
-$$ \text{Log}(\boldsymbol{R}) = (\text{log}(\boldsymbol{R}))^\vee $$
+$$\text{Log}(\boldsymbol{R}) = (\text{log}(\boldsymbol{R}))^\vee$$
 
 ## 示例
 
